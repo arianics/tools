@@ -71,7 +71,7 @@ httpbin.use(bodyParser.text({type: 'xml'}));
 httpbin.get('/delay/:seconds', function(req, res) {
   setTimeout(function() {
     res.json(formatRequest(req));
-  }, (req.params.seconds || 0) * 1000);
+  }, +(req.params.seconds || 0) * 1000);
 });
 
 httpbin.post('/post', function(req, res) {

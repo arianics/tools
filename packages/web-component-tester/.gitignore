@@ -24,3 +24,5 @@ browser/*.js.map
 browser/environment/*.js*
 browser/mocha/*.js*
 browser/reporters/*.js*
+
+__aofl-build

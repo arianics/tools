@@ -19,6 +19,7 @@ import * as _ from 'lodash';
 import * as stacky from 'stacky';
 import * as tty from 'tty';
 import * as util from 'util';
+import stripAnsi from 'strip-ansi';
 
 import {BrowserDef, Stats} from './browserrunner';
 import * as config from './config';
@@ -289,7 +290,7 @@ export class CliReporter {
       const combined = line + separator + block;
       if (line === '') {
         lines[lines.length - 1] = block;
-      } else if (chalk.stripColor(combined).length <= width) {
+      } else if (stripAnsi(combined).length <= width) {
         lines[lines.length - 1] = combined;
       } else {
         lines.push(block);
@@ -336,7 +337,7 @@ export class CliReporter {
 }
 // Yeah, yeah.
 function padRight(str: string, length: number) {
-  let currLength = chalk.stripColor(str).length;
+  let currLength = stripAnsi(str).length;
   while (currLength < length) {
     currLength = currLength + 1;
     str = str + ' ';

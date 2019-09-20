@@ -211,11 +211,6 @@ export class BrowserRunner {
   }
 
   done(error: any) {
-    // No quitting for you!
-    if (this.options.persistent) {
-      return;
-    }
-
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
     }
@@ -256,9 +251,6 @@ export class BrowserRunner {
   }
 
   extendTimeout() {
-    if (this.options.persistent) {
-      return;
-    }
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
     }
